@@ -1,0 +1,7 @@
+[DEBUG] 2018-11-20 15:46:48 [restartedMain] o.s.b.c.l.ClasspathLoggingApplicationListener - Application failed to start with classpath: [file:/D:/ideaIU-workspace/demo-springboot2/target/classes/]
+[DEBUG] 2018-11-20 15:46:48 [background-preinit] o.h.v.m.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+[DEBUG] 2018-11-20 15:46:48 [background-preinit] o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator as ValidatorFactory-scoped message interpolator.
+[DEBUG] 2018-11-20 15:46:48 [background-preinit] o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+[DEBUG] 2018-11-20 15:46:48 [background-preinit] o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+[DEBUG] 2018-11-20 15:46:48 [background-preinit] o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+[DEBUG] 2018-11-20 15:46:48 [background-preinit] o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
