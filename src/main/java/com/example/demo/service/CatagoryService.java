@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Catagory;
-import com.example.demo.respository.CatatoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,16 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class CatagoryService {
+public interface CatagoryService {
 
-    @Autowired
-    private CatatoryRepository catatoryRepository;
+     Catagory save(Catagory catagory);
 
-    public Catagory save(Catagory catagory){
-        return  catatoryRepository.save(catagory);
-    }
-
-    public Catagory findById(int id){
-        return catatoryRepository.findById(id).orElse(null);
-    }
+     Catagory findById(int id);
 }

@@ -1,11 +1,9 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by YF-20170911 on 2018/11/19.
@@ -26,11 +24,9 @@ public class Product {
     @Column(name="modifyTime")
     private Date productModifyTime;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy ="products")
-    private Set<Orders> orders;
 
-    @ManyToOne(cascade = CascadeType.PERSIST,optional = false,fetch = FetchType.LAZY)
+
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "catagory_id")
     private Catagory catagory;
 

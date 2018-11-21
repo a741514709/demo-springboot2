@@ -21,13 +21,10 @@ public class Role {
     @JsonProperty("name")
     private String name;
 
-    @OneToMany(mappedBy = "role")
-    private Set<User> users;
 
-    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
     @JoinTable(name = "ROLE_RESOURCE",joinColumns=@JoinColumn(name = "role_id"),inverseJoinColumns = @JoinColumn(name="resource_id"))
     private Set<Resource> resources;
-
 
 
 

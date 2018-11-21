@@ -24,7 +24,7 @@ public class Orders {
     @Column(name="modifyTime")
     private Date orderModifyTime;
 
-    @ManyToMany(cascade =CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @ManyToMany(cascade ={CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
     @JoinTable(name="Order_Product",joinColumns=@JoinColumn(name="order_id",referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name="product_id",referencedColumnName = "id"))
     private Set<Product> products;

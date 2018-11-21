@@ -1,11 +1,9 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 /**
  * Created by YF-20170911 on 2018/11/20.
@@ -21,11 +19,6 @@ public class Resource {
 
     @NotNull
     private String url;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "resources")
-    private Set<Role> roles;
-
 
 
 }

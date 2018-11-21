@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,7 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by YF-20170911 on 2018/11/16.
@@ -18,7 +16,7 @@ import java.util.Set;
 @Entity
 @Table
 @Data
-public class User {
+public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +33,8 @@ public class User {
 
     @JsonProperty("roles")
     @JoinColumn(name = "role_id")
-    @ManyToOne(cascade=CascadeType.PERSIST,optional = false)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},optional = false,fetch = FetchType.EAGER)
     private Role role;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private Set<Orders> orders;
+
 }
