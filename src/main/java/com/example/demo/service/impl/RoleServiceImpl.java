@@ -2,16 +2,18 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.Role;
 import com.example.demo.respository.RoleRepository;
+import com.example.demo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class RoleServiceImpl {
+public class RoleServiceImpl implements RoleService {
 
     @Autowired
     private RoleRepository roleRepository;
+
 
     public Role save(Role role){
 

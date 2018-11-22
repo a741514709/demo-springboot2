@@ -15,9 +15,17 @@ spring:
       ddl-auto: update
     show-sql: true
 
+#    fastjson 解决中文乱码
+  http:
+    encoding:
+      force: true
+
+#session超时
 server:
   servlet:
     context-path: /
+    session:
+      timeout: 6000s
   tomcat:
     uri-encoding: utf-8
   port: 8090

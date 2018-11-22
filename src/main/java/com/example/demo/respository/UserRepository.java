@@ -14,10 +14,10 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User,Integer>{
 
 
-    List<User> findByNameLike(String name);
+    List<User> findByUsernameLike(String name);
 
 
-    User findByName(String name);
+    User findByUsername(String name);
 
     //通过用户id查询用户所具有的权限
     @Query(value = "select re.url from resource re where re.id in(SELECT rr.resource_id from role_resource rr where rr.role_id=(SELECT u.role_id from `user` u where u.id=?1)) ",nativeQuery = true)

@@ -3,10 +3,13 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.respository.UserRepository;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +19,7 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
@@ -27,7 +30,7 @@ public class UserServiceImpl {
 
     //通过用户名精准查询
     public User findByName(String name){
-        return userRepository.findByName(name);
+        return userRepository.findByUsername(name);
     }
 
     //通过姓名模糊查询
@@ -35,7 +38,7 @@ public class UserServiceImpl {
 
         String likeName="%"+name+"%";
 
-        return userRepository.findByNameLike(likeName);
+        return userRepository.findByUsernameLike(likeName);
     }
 
     //通过id获取用户
@@ -44,7 +47,7 @@ public class UserServiceImpl {
     }
 
     //获取指定用户的所有角色
-    public Role findRolesByName(String name){
+    public Role findRoleByName(String name){
         User user=findByName(name);
         Role role= user.getRole();
         return role;
@@ -82,7 +85,18 @@ public class UserServiceImpl {
         return map;
 
 
+    }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        User user=userRepository.findByUsername(username);
+        if(user==null){
+            throw new UsernameNotFoundException(username);
+        }
+        Role role=findRoleByName(username);
+        user.setRole(role);
+
+        return user;
     }
 }

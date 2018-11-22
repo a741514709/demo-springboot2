@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.model.User;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +11,8 @@ import java.util.Map;
  * Created by YF-20170911 on 2018/11/16.
  */
 
-public interface UserService  {
+public interface UserService extends UserDetailsService {
+
 
      User save(User user);
 
@@ -22,8 +25,9 @@ public interface UserService  {
     //通过id获取用户
      User findById(Integer id);
 
-    //通过id删除用户
-     void deleteUser(Integer id);
+    //通过id删除用户,记得角色前需要加上ROLE_标识
+    @PreAuthorize("hasRole('ROLE_删除权限')")
+    void deleteUser(Integer id);
 
     //通过用户id获取用户权限
      List<String> findPermissionById(Integer id);
