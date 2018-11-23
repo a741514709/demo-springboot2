@@ -4,6 +4,7 @@ import com.example.demo.model.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ public interface UserService extends UserDetailsService {
      User findById(Integer id);
 
     //通过id删除用户,记得角色前需要加上ROLE_标识
-    @PreAuthorize("hasRole('ROLE_删除权限')")
+    @PreAuthorize("hasRole('ROLE_用户删除权限')")
     void deleteUser(Integer id);
 
     //通过用户id获取用户权限
@@ -34,5 +35,9 @@ public interface UserService extends UserDetailsService {
 
     //列表默认分页查询
      Map<Long,List<User>> findAllByPageAndSort(int page, int size);
+
+     //获取sessionid
+
+    String sessionId(HttpServletRequest request);
 
 }

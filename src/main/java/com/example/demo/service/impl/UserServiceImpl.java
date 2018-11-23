@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +85,11 @@ public class UserServiceImpl implements UserService {
 
         return map;
 
+    }
 
+    @Override
+    public String sessionId(HttpServletRequest request) {
+        return request.getSession().getId();
     }
 
     @Override

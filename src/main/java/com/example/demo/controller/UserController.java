@@ -92,8 +92,13 @@ public class UserController  {
 
         return ResponseHelper.success(map);
 
+    }
 
+    //test sessionId
+    @GetMapping("/session")
+    public String getSessionId(HttpServletRequest request){
 
+        return userService.sessionId(request);
 
     }
 

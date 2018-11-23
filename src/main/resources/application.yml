@@ -4,6 +4,8 @@ spring:
       host: 10.30.4.3
       port: 27017
       database: test
+
+
   datasource:
     url: jdbc:mysql://10.30.10.235:3306/study?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT
     username: root
@@ -19,6 +21,18 @@ spring:
   http:
     encoding:
       force: true
+  redis:
+    database: 0
+    host: 10.30.4.12
+    port: 6379
+    password:
+    jedis:
+      timeout: 500
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
 
 #session超时
 server:
@@ -35,7 +49,7 @@ logging:
   pattern:
     console: "%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
     level:
-      com.example.demo=DEBUG
+      com.example.demo=INFO
       org.springframework.web=DEBUG
       org.hibernate=ERROR
       root=WARN
